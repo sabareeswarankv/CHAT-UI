@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat UI – Dark</title>
+
+<style>
+:root{
+  --bg-main:#0f0f10;
+  --bg-panel:#1a1a1d;
+  --bg-chat:#121212;
+  --border:#262626;
+
+  --text-main:#f5f5f5;
+  --text-muted:#a1a1aa;
+
+  --incoming:#262626;
+  --outgoing:#3797f0;
+  --accent:#3797f0;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body{
+  height:100vh;
+  background:var(--bg-main);
+  color:var(--text-main);
+}
+
+.app{
+  display:flex;
+  height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:280px;
+  background:var(--bg-panel);
+  border-right:1px solid var(--border);
+  padding:18px;
+}
+
+.sidebar h2{
+  margin-bottom:14px;
+}
+
+.search{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:#1f1f22;
+  color:var(--text-main);
+  margin-bottom:18px;
+}
+
+.search::placeholder{
+  color:var(--text-muted);
+}
+
+.contact{
+  display:flex;
+  gap:12px;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.contact:hover{
+  background:#1f1f22;
+}
+
+.contact.active{
+  background:#202023;
+}
+
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.contact-info h4{
+  font-size:14px;
+}
+
+.contact-info p{
+  font-size:12px;
+  color:var(--text-muted);
+}
+
+/* CHAT AREA */
+.chat-area{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  background:var(--bg-chat);
+}
+
+/* HEADER */
+.chat-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:15px 20px;
+  background:var(--bg-panel);
+  border-bottom:1px solid var(--border);
+}
+
+.chat-header img{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.status{
+  font-size:12px;
+  color:#22c55e;
+}
+
+/* MESSAGES */
+.messages{
+  flex:1;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  overflow-y:auto;
+}
+
+.message{
+  max-width:60%;
+  padding:12px 16px;
+  border-radius:18px;
+  font-size:14px;
+}
+
+.message span{
+  display:block;
+  font-size:11px;
+  margin-top:6px;
+  opacity:0.6;
+}
+
+.incoming{
+  align-self:flex-start;
+  background:var(--incoming);
+}
+
+.outgoing{
+  align-self:flex-end;
+  background:var(--outgoing);
+  color:#ffffff;
+}
+
+/* INPUT */
+.input-area{
+  display:flex;
+  padding:15px;
+  background:var(--bg-panel);
+  border-top:1px solid var(--border);
+}
+
+.input-area input{
+  flex:1;
+  padding:12px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:#1f1f22;
+  color:var(--text-main);
+  outline:none;
+}
+
+.input-area input::placeholder{
+  color:var(--text-muted);
+}
+
+.input-area input:focus{
+  border-color:var(--accent);
+}
+
+.input-area button{
+  margin-left:10px;
+  padding:12px 18px;
+  border:none;
+  border-radius:20px;
+  background:var(--accent);
+  color:#ffffff;
+  cursor:pointer;
+}
+
+.input-area button:hover{
+  background:#1d8ae6;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .sidebar{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>Chats</h2>
+    <input class="search" placeholder="Search">
+
+    <div class="contact active">
+      <img class="avatar" src="https://i.pinimg.com/474x/f4/d3/72/f4d372b38790974c0c751fa32ef6550e.jpg">
+      <div class="contact-info">
+        <h4>Fike</h4>
+        <p>send lemme listen</p>
+      </div>
+    </div>
+
+    <div class="contact">
+      <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjjhyQyFQLQ4_XuyWa9fCAbUYQ61lr9H7JOdqMFiTgWw&s">
+      <div class="contact-info">
+        <h4>dustin</h4>
+        <p>Insanityyyyyy</p>
+      </div>
+    </div>
+
+    <div class="contact">
+      <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwyHucphRzn5XeN-TCKIfyEGhfFYtrmn_x_Q&s">
+      <div class="contact-info">
+        <h4>jb</h4>
+        <p>yo bro hit on this song</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CHAT -->
+  <main class="chat-area">
+
+    <div class="chat-header">
+      <img src="https://i.pinimg.com/474x/f4/d3/72/f4d372b38790974c0c751fa32ef6550e.jpg">
+      <div>
+        <strong>Fike</strong><br>
+        <span class="status">Online</span>
+      </div>
+    </div>
+
+    <div class="messages">
+      <div class="message incoming">
+        heyo
+        <span>10:30</span>
+      </div>
+
+      <div class="message outgoing">
+        tell
+        <span>10:31</span>
+      </div>
+
+      <div class="message incoming">
+        listen to this song goated
+        <span>10:32</span>
+      </div>
+
+       <div class="message outgoing">
+        send lemme listen
+        <span>10:33</span>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input placeholder="Type a message…">
+      <button>Send</button>
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
